@@ -21,7 +21,22 @@ Built entirely in **Python** using:
 | Typo-tolerant search              | Levenshtein distance         |
 | Spelling correction               | Fuzzy prefix + correction    |
 
----
+🔁 Example Usage
 
-## 📂 Project Structure
+trie.insert("help", 8)
+trie.insert("helper", 5)
+trie.insert("hello", 6)
+
+# Smart autocomplete
+smart_autocomplete(trie, "hel")
+>> [('help', 8), ('helper', 5), ('hello', 6)]
+
+# Typo handling
+smart_autocomplete(trie, "hepl")
+>> [('help', 8), ('helper', 5)]
+
+# Auto-learn when word is selected
+trie.increase_frequency("helper")
+smart_autocomplete(trie, "hel")
+>> [('helper', 6), ('help', 8)]
 
